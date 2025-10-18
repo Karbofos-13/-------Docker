@@ -1,7 +1,5 @@
 from flask import Flask, render_template, request
 import tensorflow as tf
-from tensorflow import keras
-from keras.models import load_model
 import numpy as np
 import os
 
@@ -11,7 +9,7 @@ app = Flask(__name__)
 
 model_path = 'dnn_model.keras'
 if os.path.exists(model_path):
-    model = load_model(model_path)
+    model = tf.keras.models.load_model(model_path)
 else:
     raise FileNotFoundError(f"Файл модели '{model_path}' не найден. Пожалуйста, убедитесь, что файл существует.")
 
